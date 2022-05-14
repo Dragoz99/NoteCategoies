@@ -23,6 +23,13 @@ class MainActivity : AppCompatActivity() {
         buttonNewNote.setOnClickListener {
             openEditActivity()
         }
+        list_view.setOnItemClickListener { parent, view, position, id ->
+            Log.v(TAG,"id: $id \n view:" +
+                    " $view \n position: " +
+                    "$position \n partent $parent")
+
+
+        }
 
 
     }
@@ -52,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent (this@MainActivity, viewMode::class.java)
         startActivity(intent)
     }
+
 
 
 
