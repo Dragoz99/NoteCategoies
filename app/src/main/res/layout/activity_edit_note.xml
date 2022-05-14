@@ -19,17 +19,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnCancle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="delate note"
+        android:text="cancle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/TitleNoteText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -43,29 +43,30 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/NoteTextField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:ems="10"
         android:gravity="top"
-        android:inputType="textPersonName"
-        android:padding="10dp"
+        android:inputType="textMultiLine"
+        android:padding="16dp"
         android:text="Text Note"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnCancle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/TitleNoteText"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnUpdate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="update"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/btnCancle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/NoteTextField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

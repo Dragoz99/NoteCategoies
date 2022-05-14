@@ -53,6 +53,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        Log.v(TAG, "onPause")
+        var NoteClass = db.readData()
+        list_view.adapter = MyAdapter(this, NoteClass)
+
+    }
+
     fun openEditActivity(){
         Log.v(TAG, "onClick")
 
