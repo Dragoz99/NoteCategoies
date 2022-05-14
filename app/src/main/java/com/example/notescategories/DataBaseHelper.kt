@@ -34,9 +34,6 @@ class DataBaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         onCreate(db)
     }
 
-
-
-
     fun insertData(nota: NoteClass){
         val database = this.writableDatabase
         val contentValues = ContentValues()

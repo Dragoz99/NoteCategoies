@@ -12,9 +12,10 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 val TAG = "MainActivity"
-class MainActivity : AppCompatActivity() {
 
+class MainActivity : AppCompatActivity() {
     val db = DataBaseHelper(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Log.v(TAG, "onStart")
-        db.insertData(NoteClass("bello ", "figo"))
+        //db.insertData(NoteClass("bello ", "figo"))
         var NoteClass = db.readData()
         list_view.adapter = MyAdapter(this, NoteClass)
 
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     fun openEditActivity(){
         Log.v(TAG, "onClick")
-        db.removeData()
+
         val intent = Intent (this@MainActivity, EditNoteActivity::class.java)
 
         startActivity(intent)
