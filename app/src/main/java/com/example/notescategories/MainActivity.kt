@@ -11,9 +11,9 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
-
+val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
-    val TAG = "MainActivity"
+
     val db = DataBaseHelper(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,14 +24,19 @@ class MainActivity : AppCompatActivity() {
             openEditActivity()
         }
         list_view.setOnItemClickListener { parent, view, position, id ->
-            Log.v(TAG,"id: $id \n view:" +
-                    " $view \n position: " +
-                    "$position \n partent $parent")
-
-
+            Log.v(TAG,"id: $id \n" +
+                    "view: $view \n " +
+                    "position:$position \n" +
+                    "partent $parent")
+            val intent = Intent (this@MainActivity, viewMode::class.java)
+            intent.putExtra("TITLE_NOTE", (list_view.adapter as MyAdapter).returnTitleNote(position))
+            intent.putExtra("ID_NOTE",(list_view.adapter as MyAdapter).retunrIdNote(position))
+            intent.putExtra("TEXT_NOTE", (list_view.adapter as MyAdapter).returnTextNote(position))
+            (list_view.adapter as MyAdapter).returnTitleNote(position)
+            (list_view.adapter as MyAdapter).retunrIdNote(position)
+            (list_view.adapter as MyAdapter).returnTextNote(position)
+            startActivity(intent)
         }
-
-
     }
 
 
@@ -44,23 +49,23 @@ class MainActivity : AppCompatActivity() {
         var NoteClass = db.readData()
         list_view.adapter = MyAdapter(this, NoteClass)
 
+
     }
 
     fun openEditActivity(){
         Log.v(TAG, "onClick")
         db.removeData()
         val intent = Intent (this@MainActivity, EditNoteActivity::class.java)
+
         startActivity(intent)
     }
 
     //utilizzare per aprire una nota specifica
-    fun openViewActivity(){
+    fun openViewActivity(title: String, note : String, date: String){
         Log.v(TAG, "onClick")
-        val intent = Intent (this@MainActivity, viewMode::class.java)
-        startActivity(intent)
+
+
     }
-
-
 
 
 
@@ -75,6 +80,21 @@ class MainActivity : AppCompatActivity() {
 
         override fun getItemId(position: Int): Long {
             return position.toLong()
+        }
+
+        //funzione che ritorna l'id della nota dal numero della posizione
+        fun retunrIdNote(position: Int): Int{
+            Log.v(TAG, "id:return")
+            return data[position].id
+
+        }
+        fun returnTitleNote(position: Int): String{
+            Log.v(TAG, "title:return")
+            return data[position].titleNote
+        }
+        fun returnTextNote(position: Int): String{
+            Log.v(TAG, "text:return")
+            return data[position].TextNote
         }
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
