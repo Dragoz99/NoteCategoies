@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         buttonNewNote.setOnClickListener {
-            onUpdate()
+           //onUpdate()
             openEditActivity()
-            onUpdate()
+            //onUpdate()
         }
         list_view.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent (this@MainActivity, viewMode::class.java)
@@ -79,12 +79,14 @@ class MainActivity : AppCompatActivity() {
         list_view.adapter = MyAdapter(this, NoteClass)
     }
 
-
-
-
-
-
     // inserimento dei dati all'interno del database.
+
+
+    override fun onStop(){
+        super.onStop()
+        Log.v(TAG, "onStart")
+        onUpdate()
+    }
 
     override fun onStart() {
         super.onStart()
@@ -108,6 +110,11 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.v(TAG, "onDestroy")
+        onUpdate()
+    }
+
+    override fun onResume() {
+        super.onResume()
         onUpdate()
     }
 
