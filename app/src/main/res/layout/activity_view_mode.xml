@@ -16,7 +16,7 @@
         android:fontFamily="@font/comic_neue_light"
         android:text="View Mode"
         android:textAllCaps="true"
-        android:textColor="#0E0E0E"
+        android:textColor="@color/purple_200"
         android:textSize="34sp"
         android:textStyle="bold|italic" />
 

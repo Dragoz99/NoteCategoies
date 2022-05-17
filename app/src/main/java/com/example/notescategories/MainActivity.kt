@@ -20,13 +20,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        onUpdate()
 
         buttonNewNote.setOnClickListener {
-           //onUpdate()
+           onUpdate()
             openEditActivity()
-            //onUpdate()
+
         }
+        onUpdate()
         list_view.setOnItemClickListener { parent, view, position, id ->
+            onUpdate()
             val intent = Intent (this@MainActivity, viewMode::class.java)
             intent.putExtra("TITLE_NOTE", (list_view.adapter as MyAdapter).returnTitleNote(position))
             intent.putExtra("ID_NOTE",(list_view.adapter as MyAdapter).retunrIdNote(position))
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+        onUpdate()
         var NoteClass = db.readData()
         list_view.adapter = MyAdapter(this, NoteClass)
 
