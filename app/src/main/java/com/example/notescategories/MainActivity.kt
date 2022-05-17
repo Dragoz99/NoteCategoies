@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         buttonNewNote.setOnClickListener {
+            onUpdate()
             openEditActivity()
+            onUpdate()
         }
         list_view.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent (this@MainActivity, viewMode::class.java)
@@ -34,8 +36,9 @@ class MainActivity : AppCompatActivity() {
             (list_view.adapter as MyAdapter).retunrIdNote(position)
             (list_view.adapter as MyAdapter).returnTextNote(position) // un modo per ritornare quello che c'è scritto sull'oggetto
 
-
+            onUpdate()
             startActivity(intent)
+
         }
         var NoteClass = db.readData()
         list_view.adapter = MyAdapter(this, NoteClass)
@@ -113,6 +116,7 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent (this@MainActivity, EditNoteActivity::class.java)
 
+        onUpdate()
         startActivity(intent)
     }
 
@@ -127,6 +131,7 @@ class MainActivity : AppCompatActivity() {
         override fun getCount(): Int {
             return data.size
         }
+
 
         override fun getItem(position: Int): Any {
             return position
@@ -164,6 +169,7 @@ class MainActivity : AppCompatActivity() {
                 dateTextView.text = data[position].TextNote
                 textviewId.text = "${data[position].id}"
             }
+
             return newView
 
         }
