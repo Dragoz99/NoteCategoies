@@ -8,8 +8,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.BaseAdapter
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.view.get
 import kotlinx.android.synthetic.main.activity_main.*
 val TAG = "MainActivity"
 
@@ -33,12 +36,24 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("TITLE_NOTE", (list_view.adapter as MyAdapter).returnTitleNote(position))
             intent.putExtra("ID_NOTE",(list_view.adapter as MyAdapter).retunrIdNote(position))
             intent.putExtra("TEXT_NOTE", (list_view.adapter as MyAdapter).returnTextNote(position))
+
             (list_view.adapter as MyAdapter).returnTitleNote(position)
             (list_view.adapter as MyAdapter).retunrIdNote(position)
             (list_view.adapter as MyAdapter).returnTextNote(position)
+
             startActivity(intent)
         }
+
+
+        list_view.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
+            Toast.makeText(applicationContext, "Long clicked", Toast.LENGTH_SHORT).show()
+            true
+
+        }
     }
+
+
+
 
 
     // inserimento dei dati all'interno del database.

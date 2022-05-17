@@ -2,6 +2,7 @@ package com.example.notescategories
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_edit_note.*
 
 class EditNoteActivity : AppCompatActivity() {
@@ -11,6 +12,7 @@ class EditNoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_note)
 
         btnUpdate.setOnClickListener{
+
 
         }
 

@@ -8,7 +8,8 @@ import android.provider.ContactsContract
 import android.widget.Toast
 
 val DATABASE_VERSION = 1
-val DATABASE_NAME ="NoteDataBaseDb.db"
+val DATABASE_NAME ="NoteDataBaseDbd.db"
+// per aver un database pulito bisogna rinominare DATABASE_NAME
 val TABLENAME = "NoteDataBase"
 val COL_TEXT_NOTE= "textNote"
 val COL_TITLE_NOTE ="titleNote"
@@ -54,6 +55,7 @@ class DataBaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
 
     }
 
+
     fun readData(): MutableList<NoteClass>{
         val list: MutableList<NoteClass> = ArrayList()
         val db = this.readableDatabase
@@ -73,10 +75,6 @@ class DataBaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
     fun removeData(){
         val db = this.writableDatabase
         db?.execSQL("DELETE FROM "+TABLENAME)
-    }
-    fun removeSingleNote(id: Int){
-
-
     }
 
 
