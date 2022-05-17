@@ -11,15 +11,10 @@ class EditNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_note)
 
-        btnUpdate.setOnClickListener{
+        
 
 
-        }
 
-
-        btnCancle.setOnClickListener{
-
-        }
     }
 
 

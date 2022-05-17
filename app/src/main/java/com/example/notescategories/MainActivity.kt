@@ -5,13 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.BaseAdapter
-import android.widget.TextView
-import android.widget.Toast
+import android.view.*
+import android.widget.*
 import androidx.core.view.get
 import kotlinx.android.synthetic.main.activity_main.*
 val TAG = "MainActivity"
@@ -23,15 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         buttonNewNote.setOnClickListener {
             openEditActivity()
         }
         list_view.setOnItemClickListener { parent, view, position, id ->
-            Log.v(TAG,"id: $id \n" +
-                    "view: $view \n " +
-                    "position:$position \n" +
-                    "partent $parent")
             val intent = Intent (this@MainActivity, viewMode::class.java)
             intent.putExtra("TITLE_NOTE", (list_view.adapter as MyAdapter).returnTitleNote(position))
             intent.putExtra("ID_NOTE",(list_view.adapter as MyAdapter).retunrIdNote(position))
@@ -46,10 +36,36 @@ class MainActivity : AppCompatActivity() {
 
 
         list_view.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
-            Toast.makeText(applicationContext, "Long clicked", Toast.LENGTH_SHORT).show()
+            onLongClick(view)
+
             true
 
+
+
+
         }
+
+    }
+    @Override
+    fun onLongClick(v: View): Boolean{
+        val menu = PopupMenu(this, v)
+        menu.menu.add("DELATE")
+        menu.setOnMenuItemClickListener {
+            val item: MenuItem
+        /* if(item.title.equals("DELATE")){
+
+           }*/
+            true
+        }
+        menu.show()
+        return true
+    }
+    fun onMenuItemClick(item: MenuItem): Boolean{
+        if(item.title.equals("DELATE")){
+            //delate the note
+
+        }
+        return true
     }
 
 
