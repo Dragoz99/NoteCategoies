@@ -37,11 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         list_view.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
             onLongClick(view)
-
             true
-
-
-
 
         }
 
@@ -50,23 +46,22 @@ class MainActivity : AppCompatActivity() {
     fun onLongClick(v: View): Boolean{
         val menu = PopupMenu(this, v)
         menu.menu.add("DELATE")
-        menu.setOnMenuItemClickListener {
-            val item: MenuItem
-        /* if(item.title.equals("DELATE")){
+        menu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+            if(item.title.equals("DELATE")){
+                // azione di cancellazione
+                Log.v(TAG,"CIAO")
 
-           }*/
+
+
+
+            }
             true
-        }
+        })
         menu.show()
         return true
     }
-    fun onMenuItemClick(item: MenuItem): Boolean{
-        if(item.title.equals("DELATE")){
-            //delate the note
 
-        }
-        return true
-    }
+
 
 
 
@@ -103,8 +98,6 @@ class MainActivity : AppCompatActivity() {
     //utilizzare per aprire una nota specifica
     fun openViewActivity(title: String, note : String, date: String){
         Log.v(TAG, "onClick")
-
-
     }
 
 
