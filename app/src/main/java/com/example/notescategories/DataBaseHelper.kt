@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.ContactsContract
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 
 val DATABASE_VERSION = 1
 val DATABASE_NAME ="NoteDataBaseDbd.db"
@@ -16,7 +17,7 @@ val COL_TITLE_NOTE ="titleNote"
 val COL_ID_NOTE = "id"
 
 
-val COSO1 ="DELATE * FROM "+ TABLENAME + " "
+
 
 
 class DataBaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -56,6 +57,7 @@ class DataBaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
     }
 
 
+
     fun readData(): MutableList<NoteClass>{
         val list: MutableList<NoteClass> = ArrayList()
         val db = this.readableDatabase
@@ -72,11 +74,14 @@ class DataBaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         }
         return list
     }
-    fun removeData(){
+    fun removeAllData(){
         val db = this.writableDatabase
         db?.execSQL("DELETE FROM "+TABLENAME)
     }
-
+    fun removeSingleNote(pos: Int){
+        val db = this.writableDatabase
+        db?.execSQL("DELETE FROM "+TABLENAME +" WHERE "+COL_ID_NOTE+ " = "+pos)
+    }
 
 
 

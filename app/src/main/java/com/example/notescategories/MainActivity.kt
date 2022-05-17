@@ -8,7 +8,10 @@ import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.core.view.get
+import kotlinx.android.synthetic.main.activity_edit_note.view.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.row.view.*
+
 val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
@@ -29,21 +32,25 @@ class MainActivity : AppCompatActivity() {
 
             (list_view.adapter as MyAdapter).returnTitleNote(position)
             (list_view.adapter as MyAdapter).retunrIdNote(position)
-            (list_view.adapter as MyAdapter).returnTextNote(position)
+            (list_view.adapter as MyAdapter).returnTextNote(position) // un modo per ritornare quello che c'è scritto sull'oggetto
+
 
             startActivity(intent)
         }
+        var NoteClass = db.readData()
+        list_view.adapter = MyAdapter(this, NoteClass)
 
 
         list_view.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
-            onLongClick(view)
+            onLongClick(view,position)
             true
 
         }
 
+        onUpdate()
     }
     @Override
-    fun onLongClick(v: View): Boolean{
+    fun onLongClick(v: View, p: Int): Boolean{
         val menu = PopupMenu(this, v)
         menu.menu.add("DELATE")
         menu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
@@ -51,16 +58,23 @@ class MainActivity : AppCompatActivity() {
                 // azione di cancellazione
                 Log.v(TAG,"CIAO")
 
+                val id_nota = (list_view.adapter as MyAdapter).retunrIdNote(p)
 
-
-
+                System.out.println(id_nota) // per debug
+                db?.removeSingleNote(id_nota)
+                onUpdate()
             }
             true
         })
         menu.show()
+        onUpdate()
         return true
     }
 
+    fun onUpdate(){
+        var NoteClass = db.readData()
+        list_view.adapter = MyAdapter(this, NoteClass)
+    }
 
 
 
@@ -72,19 +86,26 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Log.v(TAG, "onStart")
-        //db.insertData(NoteClass("bello ", "figo"))
-        var NoteClass = db.readData()
-        list_view.adapter = MyAdapter(this, NoteClass)
+        onUpdate()
+    }
 
-
+    override fun onRestart() {
+        super.onRestart()
+        Log.v(TAG, "onRestart")
+          onUpdate()
     }
 
     override fun onPause() {
         super.onPause()
         Log.v(TAG, "onPause")
-        var NoteClass = db.readData()
-        list_view.adapter = MyAdapter(this, NoteClass)
+        onUpdate()
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.v(TAG, "onDestroy")
+        onUpdate()
     }
 
     fun openEditActivity(){
