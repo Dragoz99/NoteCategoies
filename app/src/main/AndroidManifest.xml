@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesCategories">
         <activity
+            android:name=".menuCategory"
+            android:exported="true" />
+        <activity
             android:name=".viewMode"
             android:exported="true" />
         <activity

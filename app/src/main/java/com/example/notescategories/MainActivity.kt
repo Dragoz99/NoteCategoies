@@ -174,11 +174,11 @@ class MainActivity : AppCompatActivity() {
             if(newView != null){
                 val textView = newView.findViewById<TextView>(R.id.titleTextView) // name Note
                 val dateTextView = newView.findViewById<TextView>(R.id.dateTextView) // date note
-                val textviewId = newView.findViewById<TextView>(R.id.textViewPosition)
+              //  val textviewId = newView.findViewById<TextView>(R.id.textViewPosition)
 
                 textView.text = data[position].titleNote
                 dateTextView.text = data[position].TextNote
-                textviewId.text = "${data[position].id}"
+             //   textviewId.text = "${data[position].id}"
             }
 
             return newView
