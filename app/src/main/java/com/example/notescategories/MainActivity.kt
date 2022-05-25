@@ -28,21 +28,26 @@ class MainActivity : AppCompatActivity() {
 
         }
         onUpdate()
+        // al click dell'oggetto
+
         list_view.setOnItemClickListener { parent, view, position, id ->
             onUpdate()
             val intent = Intent (this@MainActivity, viewMode::class.java)
             intent.putExtra("TITLE_NOTE", (list_view.adapter as MyAdapter).returnTitleNote(position))
             intent.putExtra("ID_NOTE",(list_view.adapter as MyAdapter).retunrIdNote(position))
             intent.putExtra("TEXT_NOTE", (list_view.adapter as MyAdapter).returnTextNote(position))
-          //  intent.putExtra("TAG_NOTE",(list_view.adapter as MyAdapter).returnTagNote(position))
 
+            // tag note
+            intent.putExtra("TAG_NOTE",(list_view.adapter as MyAdapter).returnTagNote(position))
 
 
 
             (list_view.adapter as MyAdapter).returnTitleNote(position)
             (list_view.adapter as MyAdapter).retunrIdNote(position)
             (list_view.adapter as MyAdapter).returnTextNote(position) // un modo per ritornare quello che c'è scritto sull'oggetto
-          //  (list_view.adapter as MyAdapter).returnTagNote(position)
+
+            // tag note
+            (list_view.adapter as MyAdapter).returnTagNote(position)
 
             onUpdate()
             startActivity(intent)
@@ -62,6 +67,8 @@ class MainActivity : AppCompatActivity() {
         onUpdate()
     }
     @Override
+
+    // cancellazione nota
     fun onLongClick(v: View, p: Int): Boolean{
         val menu = PopupMenu(this, v)
         menu.menu.add("DELATE")
@@ -173,7 +180,7 @@ class MainActivity : AppCompatActivity() {
         }
         fun returnTagNote(position: Int): String{
             Log.v(TAG, "tag: return ")
-            return data[position].tag_note
+            return data[position].TagNote
         }
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
             var newView = convertView
@@ -182,10 +189,13 @@ class MainActivity : AppCompatActivity() {
             if(newView != null){
                 val textView = newView.findViewById<TextView>(R.id.titleTextView) // name Note
                 val dateTextView = newView.findViewById<TextView>(R.id.dateTextView) // date note
-              //  val textviewId = newView.findViewById<TextView>(R.id.textViewPosition)
+              // val textviewId = newView.findViewById<TextView>(R.id.textViewPosition)
+               val textTagView = newView.findViewById<TextView>(R.id.textViewTag)
+
 
                 textView.text = data[position].titleNote
                 dateTextView.text = data[position].TextNote
+                textTagView.text = data[position].TagNote
              //   textviewId.text = "${data[position].id}"
             }
 

@@ -10,8 +10,7 @@ import kotlinx.android.synthetic.main.activity_edit_note.*
 
 class EditNoteActivity : AppCompatActivity() {
     val db = DataBaseHelper(this)
-    lateinit var TAG_TEMP_NOTE : String
-
+    var TAG_TEMP_NOTE : String = "no tag"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +19,7 @@ class EditNoteActivity : AppCompatActivity() {
         popupBtn.setOnClickListener {
             showPopup_(popupBtn)
         }
-
-
-
     }
-
 
     override fun onStart() {
         super.onStart()
@@ -34,7 +29,8 @@ class EditNoteActivity : AppCompatActivity() {
         super.onStop()
         val TitleSendFull= TitleNoteText.text.toString()
         val TextSendFull = NoteTextField.text.toString()
-        db.insertData(NoteClass(TitleSendFull, TextSendFull))
+        //val TagTextNote = tagTextView.text.toString()
+        db.insertData(NoteClass(TitleSendFull, TextSendFull,TAG_TEMP_NOTE))
     }
 
     private fun showPopup_(view: View){
