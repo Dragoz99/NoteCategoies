@@ -14,10 +14,13 @@ class viewMode : AppCompatActivity() {
         val title = intent.getStringExtra("TITLE_NOTE")
         val id = intent.getStringExtra("ID_NOTE")
         val text  = intent.getStringExtra("TEXT_NOTE")
+     //   val tag_n = intent.getStringExtra("TAG_NOTE")
 
         textViewTitle.setText(title)
         textViewId.setText(id)
         textViewField.setText(text)
+
+
 
 
 

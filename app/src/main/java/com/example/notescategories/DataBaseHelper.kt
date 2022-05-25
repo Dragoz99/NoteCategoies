@@ -15,6 +15,7 @@ val TABLENAME = "NoteDataBase"
 val COL_TEXT_NOTE= "textNote"
 val COL_TITLE_NOTE ="titleNote"
 val COL_ID_NOTE = "id"
+val COL_TAG_NOTE = "tag"
 
 
 
@@ -26,7 +27,9 @@ class DataBaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         var createTable =  "CREATE TABLE " + TABLENAME + " (" +
                 COL_ID_NOTE + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COL_TITLE_NOTE + " VARCHAR(256)," +
-                COL_TEXT_NOTE + " VARCHAR(256))"
+                COL_TEXT_NOTE + " VARCHAR(256), "+
+                COL_TAG_NOTE + " VARCHAR(256))"
+
         db?.execSQL(createTable)
     }
 
@@ -41,6 +44,7 @@ class DataBaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
         val contentValues = ContentValues()
         contentValues.put(COL_TEXT_NOTE, nota.TextNote)
         contentValues.put(COL_TITLE_NOTE, nota.titleNote)
+        //contentValues.put(COL_TAG_NOTE, nota.tag_note)
 
         val result = database.insert(TABLENAME, null, contentValues)
 
@@ -69,6 +73,7 @@ class DataBaseHelper(var context: Context): SQLiteOpenHelper(context, DATABASE_N
                 note.id = result.getInt(result.getColumnIndex(COL_ID_NOTE))
                 note.titleNote = result.getString(result.getColumnIndex(COL_TITLE_NOTE))
                 note.TextNote = result.getString(result.getColumnIndex(COL_TEXT_NOTE))
+                //note.tag_note = result.getString(result.getColumnIndex(COL_TAG_NOTE))
                 list.add(note)
             }while(result.moveToNext())
         }

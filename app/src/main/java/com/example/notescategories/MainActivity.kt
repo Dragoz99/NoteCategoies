@@ -34,10 +34,15 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("TITLE_NOTE", (list_view.adapter as MyAdapter).returnTitleNote(position))
             intent.putExtra("ID_NOTE",(list_view.adapter as MyAdapter).retunrIdNote(position))
             intent.putExtra("TEXT_NOTE", (list_view.adapter as MyAdapter).returnTextNote(position))
+          //  intent.putExtra("TAG_NOTE",(list_view.adapter as MyAdapter).returnTagNote(position))
+
+
+
 
             (list_view.adapter as MyAdapter).returnTitleNote(position)
             (list_view.adapter as MyAdapter).retunrIdNote(position)
             (list_view.adapter as MyAdapter).returnTextNote(position) // un modo per ritornare quello che c'è scritto sull'oggetto
+          //  (list_view.adapter as MyAdapter).returnTagNote(position)
 
             onUpdate()
             startActivity(intent)
@@ -166,7 +171,10 @@ class MainActivity : AppCompatActivity() {
             Log.v(TAG, "text:return")
             return data[position].TextNote
         }
-
+        fun returnTagNote(position: Int): String{
+            Log.v(TAG, "tag: return ")
+            return data[position].tag_note
+        }
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
             var newView = convertView
             if(convertView == null)

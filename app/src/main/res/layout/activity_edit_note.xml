@@ -12,45 +12,76 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
+        android:fontFamily="@font/comic_neue_light"
+        android:gravity="center"
         android:padding="12dp"
-        android:text="EditNote"
-        android:textSize="24sp" />
+        android:text="Edit Note"
+        android:textAllCaps="false"
+        android:textColor="#F60000"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF174" />
 
     <EditText
         android:id="@+id/TitleNoteText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_gravity="center_horizontal"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Title Note" />
-
-    <TextView
-        android:id="@+id/tagTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="tag" />
-
-    <Button
-        android:id="@+id/popupBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="add TAG" />
+        android:hint="title note"
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="text Note: Max 256" />
+        android:background="#FFF174" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/popupBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add TAG" />
+
+        <TextView
+            android:id="@+id/tagTextView"
+            android:layout_width="313dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comic_neue_light"
+            android:padding="13dp"
+            android:text="TAG"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF174" />
 
     <EditText
         android:id="@+id/NoteTextField"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:ems="10"
-        android:gravity="top"
-        android:inputType="textMultiLine"
+        android:fontFamily="@font/comic_neue_light"
 
-        android:text="Text Note" />
+        android:gravity="top"
+        android:hint="max 256"
+        android:inputType="textMultiLine"
+        android:padding="13dp"
+        android:textStyle="bold|italic" />
 
 </LinearLayout>

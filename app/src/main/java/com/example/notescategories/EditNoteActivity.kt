@@ -44,15 +44,19 @@ class EditNoteActivity : AppCompatActivity() {
             when(item!!.itemId){
                 R.id.item1->{ // giallo
                     TAG_TEMP_NOTE= "GIALLO"
+                    tagTextView.setText("TAG -> GIALLO")
 
+                 //   tagTextView.setTextColor(R.color.)
                     Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
                 }
                 R.id.item2->{ // rosso
                     TAG_TEMP_NOTE = "ROSSO"
+                    tagTextView.setText("TAG -> ROSSO")
                     Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
                 }
                 R.id.item3 ->{ // blue
-                    TAG_TEMP_NOTE = "BLUE"
+                    TAG_TEMP_NOTE = "BLU"
+                    tagTextView.setText("TAG -> BLU")
                     Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
                 }
 
