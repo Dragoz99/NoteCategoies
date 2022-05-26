@@ -2,6 +2,7 @@ package com.example.notescategories
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -196,6 +197,11 @@ class MainActivity : AppCompatActivity() {
                 textView.text = data[position].titleNote
                 dateTextView.text = data[position].TextNote
                 textTagView.text = data[position].TagNote
+            //  textTagView.setBackgroundColor(Color.parseColor("#FFFFFF"))
+
+
+
+
              //   textviewId.text = "${data[position].id}"
             }
 

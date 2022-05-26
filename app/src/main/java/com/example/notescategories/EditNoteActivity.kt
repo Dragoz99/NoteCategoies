@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_edit_note.*
+import kotlinx.android.synthetic.main.row.*
 
 class EditNoteActivity : AppCompatActivity() {
     val db = DataBaseHelper(this)
@@ -39,20 +40,21 @@ class EditNoteActivity : AppCompatActivity() {
         popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
             when(item!!.itemId){
                 R.id.item1->{ // giallo
-                    TAG_TEMP_NOTE= "GIALLO"
-                    tagTextView.setText("TAG -> GIALLO")
+                    TAG_TEMP_NOTE= "PRIMO"
+                   // textViewTag.setBackgroundColor(getResources().getColor(R.color.yellow))
+                    tagTextView.setText("TAG : PRIMO")
 
                  //   tagTextView.setTextColor(R.color.)
                     Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
                 }
                 R.id.item2->{ // rosso
-                    TAG_TEMP_NOTE = "ROSSO"
-                    tagTextView.setText("TAG -> ROSSO")
+                    TAG_TEMP_NOTE = "SECONDO"
+                    tagTextView.setText("TAG : SECONDO")
                     Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
                 }
                 R.id.item3 ->{ // blue
-                    TAG_TEMP_NOTE = "BLU"
-                    tagTextView.setText("TAG -> BLU")
+                    TAG_TEMP_NOTE = "TERZO"
+                    tagTextView.setText("TAG : TERZO")
                     Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
                 }
 

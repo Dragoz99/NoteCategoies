@@ -53,12 +53,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TAG:"
+
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewTag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_light"
+
             android:text="TextView"
             android:textColor="@color/purple_500"
             android:textStyle="bold|italic" />
