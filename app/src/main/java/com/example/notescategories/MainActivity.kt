@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.*
 import android.widget.*
@@ -30,25 +31,14 @@ class MainActivity : AppCompatActivity() {
         }
         onUpdate()
         // al click dell'oggetto
-
         list_view.setOnItemClickListener { parent, view, position, id ->
             onUpdate()
             val intent = Intent (this@MainActivity, viewMode::class.java)
+            // passaggio parametri activity
             intent.putExtra("TITLE_NOTE", (list_view.adapter as MyAdapter).returnTitleNote(position))
             intent.putExtra("ID_NOTE",(list_view.adapter as MyAdapter).retunrIdNote(position))
             intent.putExtra("TEXT_NOTE", (list_view.adapter as MyAdapter).returnTextNote(position))
-
-            // tag note
-            intent.putExtra("TAG_NOTE",(list_view.adapter as MyAdapter).returnTagNote(position))
-
-
-
-            (list_view.adapter as MyAdapter).returnTitleNote(position)
-            (list_view.adapter as MyAdapter).retunrIdNote(position)
-            (list_view.adapter as MyAdapter).returnTextNote(position) // un modo per ritornare quello che c'è scritto sull'oggetto
-
-            // tag note
-            (list_view.adapter as MyAdapter).returnTagNote(position)
+            intent.putExtra("TAG_NOTE",(list_view.adapter as MyAdapter).returnTagNote(position)) // tag note
 
             onUpdate()
             startActivity(intent)
@@ -76,21 +66,20 @@ class MainActivity : AppCompatActivity() {
         menu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
             if(item.title.equals("DELATE")){
                 // azione di cancellazione
-                Log.v(TAG,"CIAO")
-
-                val id_nota = (list_view.adapter as MyAdapter).retunrIdNote(p)
-
-                System.out.println(id_nota) // per debug
+                val id_nota = (list_view.adapter as MyAdapter).retunrIdNote(p) // salva l'id della nota selezionata
+               // System.out.println(id_nota) // per debug
                 db?.removeSingleNote(id_nota)
-                onUpdate()
+                onUpdate() // aggiornamento
             }
             true
         })
-        menu.show()
-        onUpdate()
+        menu.show() // mosta il menu
+        onUpdate() // aggiornamento
         return true
     }
 
+
+    // custom
     fun onUpdate(){
         var NoteClass = db.readData()
         list_view.adapter = MyAdapter(this, NoteClass)
@@ -104,37 +93,31 @@ class MainActivity : AppCompatActivity() {
         Log.v(TAG, "onStart")
         onUpdate()
     }
-
     override fun onStart() {
         super.onStart()
         Log.v(TAG, "onStart")
         onUpdate()
     }
-
     override fun onRestart() {
         super.onRestart()
         Log.v(TAG, "onRestart")
           onUpdate()
     }
-
     override fun onPause() {
         super.onPause()
         Log.v(TAG, "onPause")
         onUpdate()
 
     }
-
     override fun onDestroy() {
         super.onDestroy()
         Log.v(TAG, "onDestroy")
         onUpdate()
     }
-
     override fun onResume() {
         super.onResume()
         onUpdate()
     }
-
     fun openEditActivity(){
         Log.v(TAG, "onClick")
 
@@ -144,18 +127,12 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    //utilizzare per aprire una nota specifica
-    fun openViewActivity(title: String, note : String, date: String){
-        Log.v(TAG, "onClick")
-    }
-
 
 
     class MyAdapter(private val context: Context, val data: MutableList<NoteClass>) : BaseAdapter(){
         override fun getCount(): Int {
             return data.size
         }
-
 
         override fun getItem(position: Int): Any {
             return position
@@ -183,6 +160,8 @@ class MainActivity : AppCompatActivity() {
             Log.v(TAG, "tag: return ")
             return data[position].TagNote
         }
+
+
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
             var newView = convertView
             if(convertView == null)
@@ -190,19 +169,12 @@ class MainActivity : AppCompatActivity() {
             if(newView != null){
                 val textView = newView.findViewById<TextView>(R.id.titleTextView) // name Note
                 val dateTextView = newView.findViewById<TextView>(R.id.dateTextView) // date note
-              // val textviewId = newView.findViewById<TextView>(R.id.textViewPosition)
-               val textTagView = newView.findViewById<TextView>(R.id.textViewTag)
-
+                val textTagView = newView.findViewById<TextView>(R.id.textViewTag) // tag note
 
                 textView.text = data[position].titleNote
                 dateTextView.text = data[position].TextNote
                 textTagView.text = data[position].TagNote
-            //  textTagView.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
-
-
-
-             //   textviewId.text = "${data[position].id}"
             }
 
             return newView
