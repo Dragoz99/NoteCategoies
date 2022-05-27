@@ -54,10 +54,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
-        onUpdate()
+
         var NoteClass = db.readData()
         list_view.adapter = MyAdapter(this, NoteClass)
-
+        onUpdate()
 
         list_view.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
             onLongClick(view,position)

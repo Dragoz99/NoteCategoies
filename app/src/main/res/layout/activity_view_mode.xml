@@ -4,56 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".viewMode">
 
-    <TextView
-        android:id="@+id/TextActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="48dp"
-        android:fontFamily="@font/comic_neue_light"
-        android:text="View Mode"
-        android:textAllCaps="true"
-        android:textColor="@color/purple_200"
-        android:textSize="34sp"
-        android:textStyle="bold|italic" />
-
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/comic_neue_light"
-        android:text="Title"
-        android:textAllCaps="true"
-        android:textSize="16sp"
-        android:textStyle="bold|italic" />
-
-    <TextView
-        android:id="@+id/textViewId"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="24dp"
-        android:text="tag: ->"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewField"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
 
-        android:fontFamily="@font/comic_neue_light"
-        android:lineSpacingExtra="16sp"
-        android:padding="20dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/TextActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/comic_neue_light"
+            android:text="View Mode"
+            android:textAllCaps="true"
+            android:textColor="@color/purple_200"
+            android:textSize="34sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/comic_neue_light"
+            android:text="Title"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4CAF50" />
+
+        <TextView
+            android:id="@+id/textViewTag_v"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:text="tag: ->"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4CAF50" />
+
+        <TextView
+            android:id="@+id/textViewField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+
+            android:fontFamily="@font/comic_neue_light"
+            android:lineSpacingExtra="16sp"
+            android:padding="20dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </LinearLayout>
